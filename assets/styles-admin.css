@@ -1,0 +1,36 @@
+.cov-notice.cov-shortcode {
+    background-color: #043785;
+    border: 0;
+    padding: 0 25px;;
+}
+.cov-notice.cov-shortcode h2 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #fff;
+}
+.cov-notice.cov-shortcode .notice-dismiss:before {
+    color: #fff;
+}
+.cov-notice.cov-shortcode .col-left {
+    float: left;
+}
+.cov-notice.cov-shortcode .col-right {
+    float: right;
+}
+.cov-notice.cov-shortcode:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.cov-notice.cov-shortcode .cov-btn {
+    display: inline-block;
+    background-color: #fff;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #043785;
+    padding: 10px 15px;
+    margin-top: 16px;
+    text-decoration: none;
+}

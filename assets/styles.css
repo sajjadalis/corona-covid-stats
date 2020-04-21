@@ -1,0 +1,315 @@
+.cov-spinner {
+    margin: 100px auto 0;
+    width: 70px;
+    text-align: center;
+  }
+  
+.cov-spinner > div {
+    width: 18px;
+    height: 18px;
+    background-color: #333;
+  
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+  
+.cov-spinner .cov-bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+  
+.cov-spinner .cov-bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+  
+  @-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0) }
+    40% { -webkit-transform: scale(1.0) }
+  }
+  
+  @keyframes sk-bouncedelay {
+    0%, 80%, 100% { 
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    } 40% { 
+      -webkit-transform: scale(1.0);
+      transform: scale(1.0);
+    }
+  }
+
+
+ .cov-card, .cov-card h3, .cov-card h4, .cov-card h5, .cov-card .cov-stats, .global-wide .cov-numbers h3, .global-wide .cov-numbers h2, .global-wide .cov-date, .cov-chart, .cov-chart h3, .cov-chart h5 {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.cov-card {
+    position: relative;
+    width: 400px;
+    margin: auto;
+    color: #fff;
+    padding: 30px;
+    border-radius: 40px;
+    box-shadow: 0 0 30px 0 rgba(30, 135, 240, 0.5);
+}
+.cov-card .cov-icon {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 100px;
+}
+.cov-card h3, .cov-card h5 {
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+}
+.cov-card h3 {
+    font-size: 28px;
+}
+.cov-card h5 {
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    letter-spacing: 0;
+}
+.cov-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.cov-grid .cov-col {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.08);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 20px 12px;
+    text-align: center;
+    border-radius: 22px;
+}
+.cov-grid .cov-col:nth-child(3n) {
+    margin-right: 0;
+}
+.cov-grid .cov-col .fas {
+    display: block;
+     width: 80px;
+    height: 80px;
+    font-size: 40px;
+    line-height: 190%;
+    background-color: #fff;
+    color: rgb(30, 135, 240);
+    border-radius: 100%;
+    margin: auto;
+}
+.cov-grid .cov-col h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 20px 0 3px;
+    padding: 0;
+}
+.cov-grid .cov-col span {
+    position: absolute;
+    top: 88px;
+    right: 5px;
+    background-color: #ef3232;
+    color: #fff;
+    padding: 3px 5px 4px;
+    font-size: 12px;
+    border-radius: 20px;
+}
+.cov-updated {
+	display: inline-block;
+	position: relative;
+	top: -6px;
+	background-color: #fff;
+	padding: 3px 5px;
+	margin-left: 5px;
+	color: #043785;
+    text-align: center;
+    font-size: 11px;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+.cov-center {
+    text-align: center;
+}
+
+
+/* COV COUNTRY CHART WIDGET */
+.cov-chart {
+    position: relative;
+    width: 400px;
+    margin: auto;
+    background-color: #fff;
+    color: #333;
+    padding: 30px;
+    border-radius: 40px;
+    box-shadow: 0 0 30px 0 #f1f1f1;
+}
+.cov-chart h3, .cov-chart h5 {
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    text-transform: uppercase;
+}
+.cov-chart h3 {
+    font-size: 28px;
+}
+.cov-chart h5 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.cov-chart .cov-icon {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 100px;
+    color: #333;
+}
+ul.chart-list {
+    list-style: none;
+    padding: 0;
+}
+ul.chart-list li {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3px;
+    font-size: 16px;
+}
+ul.chart-list li:before {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    width: 30px;
+    height: 10px;
+}
+ul.chart-list li.cases:before {
+    background: rgba(54, 162, 235, 1);
+}
+ul.chart-list li.deaths:before {
+    background: rgba(255, 99, 132, 1);
+}
+ul.chart-list li.critical:before {
+    background: rgba(255, 206, 86, 1);
+}
+ul.chart-list li.recovered:before {
+    background: rgba(75, 192, 192, 1);
+}
+ul.chart-list li.active-cases:before {
+    background: rgba(161, 196, 102, 1);
+}
+ul.chart-list li.casesper1m:before {
+    background: rgba(153, 102, 255, 1);
+}
+ul.chart-list li span {
+    background-color: #f00;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 4px;
+}
+ul.chart-list li.cases span {
+    background-color: rgba(54, 162, 235, 1);
+}
+ul.chart-list li.deaths span {
+    background-color: rgba(255, 99, 132, 1);
+}
+
+/* COV GLOBAL WIDE WIDGET */
+.global-wide .cov-global-wide {
+    position: relative;
+    padding: 40px 40px;
+}
+.global-wide .cov-global-wide p {
+    margin: 0;
+}
+.global-wide .cov-global-wide, .cov-global-wide h2, .cov-global-wide h3 {
+    color: rgba(255,255,255,.7);
+}
+.global-wide .cov-global-wide h2 {
+    color: rgb(255,255,255);
+}
+.global-wide .cov-global-wide .cov-date {
+	position: absolute;
+	top: 15px;
+	left: 0px;
+	background-color: rgba(255,255,255,1);
+	padding: 0 10px;
+	color: #000;
+    font-size: 16px;
+    margin: 0;
+    text-transform: uppercase;
+}
+.global-wide .cov-numbers h2, .global-wide .cov-numbers h3 {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    line-height: 110%;
+    letter-spacing: normal;
+    font-weight: 700;
+}
+.global-wide .cov-numbers h2 {
+    font-size: 60px;
+}
+.global-wide .cov-numbers h3 {
+    font-size: 20px;
+}
+
+
+.tabulator-cell[tabulator-field="new_cases"] {
+    background-color: #e0f2ff;
+    font-weight: 700;
+}
+.tabulator-cell[tabulator-field="new_cases"]:before {
+    content: "+"
+}
+.tabulator-cell[tabulator-field="new_deaths"] {
+    background-color: #f00;
+    color: #fff;
+    font-weight: 700;
+}
+.tabulator-cell[tabulator-field="new_deaths"]:before {
+    content: "+"
+}
+.tabulator .tabulator-header, .tabulator .tabulator-header .tabulator-col {
+    background-color: #000;
+    color: #fff;
+}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable:hover {
+    background-color: #333;
+}
+.tabulator .tabulator-footer {
+    padding: 5px 0;
+}
+.tabulator .tabulator-footer .tabulator-page-size {
+    display: inline-block;
+    margin: 5px 5px 0;
+    height: 35px;
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 3px;
+    width: 60px;
+}
+.tabulator-paginator label {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 8px 5px 0;
+}
+
+.cov-container input.cov-input {
+    padding: 15px;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    margin-bottom: 3px;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+    vertical-align: middle;
+    font-size: 14px;
+    transition: border-color .5s ease;
+}
