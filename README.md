@@ -14,10 +14,16 @@ No personal data is used or stored by this plugin. There is no cookie or any oth
 
 **Installing manually**
 
-1. Download or Clone Plugin from Github 
-2. Unzip all files to the `/wp-content/plugins/corona-covid-statst` directory
-3. Log into WordPress admin and activate the 'Corona (COVID-19) Stats' plugin through the 'Plugins' menu
+1. Download Plugin in Zip format 
+2. Go to WordPress admin > Plugins > Add New
+3. Upload Zip file and Activate Plugin
 4. Go to [https://covid19-wp.netlify.app](https://covid19-wp.netlify.app) for Shortcode Generator.
+
+Alternatively
+
+1. Clone this repo or Unzip all files to the `/wp-content/plugins`. Directory strucutre should look like `/wp-content/plugins/corona-covid-stats`
+2. Log into WordPress admin and activate the 'Corona (COVID-19) Stats' plugin through the 'Plugins' menu
+3. Go to [https://covid19-wp.netlify.app](https://covid19-wp.netlify.app) for Shortcode Generator.
 
 
 This is a open source free plugin. You can do whatever you want with it. And you can use this service as is. I try my best to ensure stability. If there is any problem or need help. Please post on issues.
