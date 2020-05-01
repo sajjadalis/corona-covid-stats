@@ -4,7 +4,7 @@ Tags: corona, covid-19, covid, stats, coronavirus, virus
 Requires at least: 4.1
 Requires PHP: 5.6
 Tested up to: 5.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,17 +14,13 @@ An easy to use Corona (COVID-19) Stats Plugin with powerful features.
 
 This plugins displays Corona (COVID-19) Virus Stats in multiple formats. You can add card with Global Stats, Country Stats, Country Stats with Chart and Table with data for all countries.
 
-Please check preview and available parameters https://covid19-wp.netlify.app/
+Please check preview and available parameters on https://covid19-wp.netlify.app/
 
-**DATA PRIVACY AND GDPR COMPLIANCE**
+**Data Source:** [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) via [pomber/covid19](https://github.com/pomber/covid19). 
 
-Please note: This plugin is using a third party service for Corona virus data. The data is fetched from Coronavirus monitor api (free) available on https://rapidapi.com/astsiatsko/api/coronavirus-monitor/details
-Please check term of service on api details page above.
+Data copyright 2020 Johns Hopkins University. The data is under [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) terms of use.
 
-No personal data is used or stored by this plugin. There is no cookie or any other data stored on system.
-
-Terms of Service:
-You can use this service as is. We try our best to ensure stability of this service.
+The code for this WordPress plugin is under MIT licensed.
 
 == Installation ==
 
