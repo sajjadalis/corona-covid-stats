@@ -11,15 +11,13 @@ Vue.component("country-chart", {
 
             <div v-else-if="country" class="">
                 <h3>{{ labeltitle }}</h3>
-                <h5 >{{ country.country_name }} <span class="cov-updated" style="background-color: #333; color: #fff;">{{ taken_at }}</span></h5>
+                <h5 >{{ country.name }} <span class="cov-updated" style="background-color: #333; color: #fff;">{{ country.date }}</span></h5>
                 <i class="fas fa-virus cov-icon"></i>
                 <ul class="chart-list">
-                    <li v-if="cases" class="cases">{{ labelcases }}: {{ country.total_cases }} <span>+{{ country.new_cases }} New</span></li>
-                    <li v-if="deaths" class="deaths">{{ labeldeaths }}: {{ country.total_deaths }} <span>+{{ country.new_deaths }} New</span></li>
-                    <li v-if="critical" class="critical">{{ labelcritical }}: {{ country.serious_critical }}</li>
-                    <li v-if="recovered" class="recovered">{{ labelrecovered }}: {{ country.total_recovered }}</li>
-                    <li v-if="active" class="active-cases">{{ labelactive }}: {{ activeCases }}</li>
-                    <li v-if="casesperm" class="casesper1m">{{ labelcasesperm }}: {{ country.total_cases_per1m }}</li>
+                    <li v-if="cases" class="cases">{{ labelcases }}: {{ country.cases.toLocaleString() }} <span>+{{ country.cases_new }} New</span></li>
+                    <li v-if="deaths" class="deaths">{{ labeldeaths }}: {{ country.deaths.toLocaleString() }} <span>+{{ country.deaths_new }} New</span></li>
+                    <li v-if="recovered" class="recovered">{{ labelrecovered }}: {{ country.recovered.toLocaleString() }}</li>
+                    <li v-if="active" class="active-cases">{{ labelactive }}: {{ country.active.toLocaleString() }}</li>
                 </ul>
             </div>
 
@@ -62,15 +60,7 @@ Vue.component("country-chart", {
             type: Boolean,
             default: 1
         },
-        'critical': {
-            type: Boolean,
-            default: 1
-        },
         'active': {
-            type: Boolean,
-            default: 1
-        },
-        'casesperm': {
             type: Boolean,
             default: 1
         },
@@ -94,61 +84,45 @@ Vue.component("country-chart", {
             type: String,
             default: 'Recovered'
         },
-        'labelcritical': {
-            type: String,
-            default: 'Critical'
-        },
         'labelactive': {
             type: String,
             default: 'Active Cases'
-        },
-        'labelcasesperm': {
-            type: String,
-            default: 'Cases / 1M'
         }
     },
     data() {
         return {
             loading: true,
             country: null,
-            activeCases: null,
-            taken_at: ''
         }
     },
     methods: {
-        numberWithCommas(n) {
-            return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        },
-        countryDataChart(country) {
+        async countryData(country) {
             this.loading = true;
 
-            let stat_by_country = 'https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php';
-
-            axios.get(stat_by_country, { 
-                headers: { 'x-rapidapi-host': host, 'x-rapidapi-key': key },
-                params: { 'country': country,  } 
-            } )
+            await axios.get("https://pomber.github.io/covid19/timeseries.json")
             .then(res => {
-                this.country = res.data.latest_stat_by_country[0];
 
-                console.log(this.country.record_date)
+                let latest = res.data[country][res.data[country].length - 1]
+                let yesterday = res.data[country][res.data[country].length - 2];              
 
-                this.taken_at = moment(this.country.record_date).format('MMMM Do, YYYY');
-                let cases = parseInt(this.country.total_cases.replace(/,/g, ''), 10);
-                let recoverd = parseInt(this.country.total_recovered.replace(/,/g, ''), 10);
-                let deaths = parseInt(this.country.total_deaths.replace(/,/g, ''), 10);
-                let activeCases = cases - recoverd - deaths;
-                this.activeCases = this.numberWithCommas(activeCases);
-                let critical = parseInt(this.country.serious_critical.replace(/,/g, ''), 10);
-                let caseper1m = parseInt(this.country.total_cases_per1m.replace(/,/g, ''), 10);
+                this.country = {
+                    name: country,
+                    date: moment(latest.date, "YYYY-M-DD").format('MMMM Do, YYYY'),
+                    cases: latest.confirmed,
+                    deaths: latest.deaths,
+                    recovered: latest.recovered,
+                    active: latest.confirmed - latest.deaths - latest.recovered,
+                    cases_new: latest.confirmed - yesterday.confirmed,
+                    deaths_new : latest.deaths - yesterday.deaths
+                }
                 
-                let chartLabel = 'Corona Stats for ' + this.country.country_name;
+                let chartLabel = 'Corona Stats for ' + country;
                 
-                let chartBg = ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(161, 196, 102, 1)', 'rgba(153, 102, 255, 1)'];
+                let chartBg = ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)', 'rgba(75, 192, 192, 1)', 'rgba(161, 196, 102, 1)'];
                 
-                let chartLabels = ['Total Cases', 'Deaths', 'Critical', 'Total Recoverd', 'Active Cases', 'Cases/1M'];
+                let chartLabels = ['Confirmed Cases', 'Deaths', 'Recoverd', 'Active Cases'];
                 
-                let data = [cases, deaths, critical, recoverd, activeCases, caseper1m];
+                let data = [this.country.cases, this.country.deaths, this.country.recovered, this.country.active];
 
                 let chartData = {
                     labels: chartLabels,
@@ -167,16 +141,15 @@ Vue.component("country-chart", {
 
                 // CHART JS //
                 let ctx = document.getElementById('countryChart');
-                let chart = new Chart(ctx, {
+                this.chart = new Chart(ctx, {
                         type: this.charttype,
                         data: chartData,
                         options: chartOptions
                 });
 
-
             })
-            .catch(function(e) {
-                console.log(e);
+            .catch(function(error) {
+                console.log(error);
             })
             .finally(() => {
                 this.loading = false;
@@ -184,6 +157,6 @@ Vue.component("country-chart", {
         }
     },
     mounted() {
-        this.countryDataChart(this.country);
+        this.countryData(this.country);
     }
 })
