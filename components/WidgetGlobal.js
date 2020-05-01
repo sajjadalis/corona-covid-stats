@@ -99,13 +99,10 @@ Vue.component("global-widget", {
         return {
             loading: true,
             global: null,
-            taken_at: ''
         }
     },
     methods: {
-        async globalData() {  
-
-            this.loading = true;
+        async globalData() { 
 
             await axios.get("https://pomber.github.io/covid19/timeseries.json")
             .then(res => {
@@ -126,7 +123,7 @@ Vue.component("global-widget", {
                     global.push(value[value.length - 1]);
                 }
                 
-                let date = moment( global[global.length - 1].date ).format('MMMM Do, YYYY');
+                let date = moment( global[global.length - 1].date, "YYYY-M-DD" ).format('MMMM Do, YYYY');
                 let cases = global.reduce((a, {confirmed}) => a + confirmed, 0);
                 let deaths = global.reduce((a, {deaths}) => a + deaths, 0);
                 let recovered = global.reduce((a, {recovered}) => a + recovered, 0);

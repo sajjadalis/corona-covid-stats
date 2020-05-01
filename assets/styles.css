@@ -74,10 +74,12 @@
 }
 .cov-card .cov-stats {
     font-size: 18px;
+    line-height: 130%;
 }
 .cov-grid-wide {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-top: 10px;
 }
 .cov-grid {
     display: grid;
@@ -135,11 +137,11 @@
     font-size: 11px;
     text-transform: uppercase;
     border-radius: 5px;
+    z-index: 999;
 }
 .cov-center {
     text-align: center;
 }
-
 
 /* COV COUNTRY CHART WIDGET */
 .cov-chart {
@@ -175,6 +177,7 @@
 ul.chart-list {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 ul.chart-list li {
     padding: 0;
@@ -261,19 +264,22 @@ ul.chart-list li.deaths span {
 }
 
 
-.tabulator-cell[tabulator-field="new_cases"] {
+.tabulator-cell[tabulator-field="country"] {
+    font-weight: 700;
+}
+.tabulator-cell[tabulator-field="cases_new"] {
     background-color: #e0f2ff;
     font-weight: 700;
 }
-.tabulator-cell[tabulator-field="new_cases"]:before {
+.tabulator-cell[tabulator-field="cases_new"]:before {
     content: "+"
 }
-.tabulator-cell[tabulator-field="new_deaths"] {
+.tabulator-cell[tabulator-field="deaths_new"] {
     background-color: #f00;
     color: #fff;
     font-weight: 700;
 }
-.tabulator-cell[tabulator-field="new_deaths"]:before {
+.tabulator-cell[tabulator-field="deaths_new"]:before {
     content: "+"
 }
 .tabulator .tabulator-header, .tabulator .tabulator-header .tabulator-col {
@@ -299,6 +305,14 @@ ul.chart-list li.deaths span {
     font-size: 16px;
     font-weight: 700;
     margin: 8px 5px 0;
+}
+.tabulator .tabulator-footer .tabulator-page {
+    background: hsla(0,0%,100%,.2)!important;
+    color: #444!important;
+}
+.tabulator .tabulator-footer .tabulator-page:hover {
+    background-color: #444!important;
+    color: #fff!important;
 }
 
 .cov-container input.cov-input {

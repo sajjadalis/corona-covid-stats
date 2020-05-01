@@ -8,41 +8,31 @@ Vue.component("country-widget", {
         </div>
 
         <div v-else-if="country" class="cov-card" :style="{ 'width': cardwidth, 'background-color': bgcolor, 'box-shadow': '0 0 30px 0' + bgcolor + 80  }">
-            
+                              
             <h3>{{ labeltitle }}</h3>
             
-            <h5 >{{ country.country_name }} <span class="cov-updated" :style="{ 'color': bgcolor }">{{ taken_at }}</span></h5>
+            <h5 >{{ country.name }} <span class="cov-updated" :style="{ 'color': bgcolor }">{{country.date}}</span></h5>
             <i class="fas fa-virus cov-icon"></i>
             <div class="cov-grid">
                 <div v-if="cases" class="cov-col">
                     <i class="fas fa-head-side-cough" :style="{ 'color': bgcolor }"></i>
                     <h4>{{ labelcases }}</h4>
-                    <div class="cov-stats">{{ country.total_cases }} <span class="cov-new">+{{ country.new_cases }} New</span></div>
+                    <div class="cov-stats">{{ country.cases.toLocaleString() }} <span class="cov-new">+{{ country.cases_new.toLocaleString() }} New</span></div>
                 </div>
                 <div v-if="deaths" class="cov-col">
                     <i class="fas fa-head-side-virus" :style="{ 'color': bgcolor }"></i>
                     <h4>{{ labeldeaths }}</h4>
-                    <div class="cov-stats">{{ country.total_deaths }} <span class="cov-new">+{{ country.new_deaths }} New</span></div>
-                </div>
-                <div v-if="critical" class="cov-col">
-                    <i class="fas fa-lungs-virus" :style="{ 'color': bgcolor }"></i>
-                    <h4>{{ labelcritical }}</h4>
-                    <div class="cov-stats">{{ country.serious_critical }}</div>
+                    <div class="cov-stats">{{ country.deaths.toLocaleString() }} <span class="cov-new">+{{ country.deaths_new.toLocaleString() }} New</span></div>
                 </div>
                 <div v-if="recovered" class="cov-col">
                     <i class="fas fa-lungs" :style="{ 'color': bgcolor }"></i>
                     <h4>{{ labelrecovered }}</h4>
-                    <div class="cov-stats">{{ country.total_recovered }}</div>
+                    <div class="cov-stats">{{ country.recovered.toLocaleString() }}</div>
                 </div>
                 <div v-if="active" class="cov-col">
                     <i class="fas fa-syringe" :style="{ 'color': bgcolor }"></i>
                     <h4>{{ labelactive }}</h4>
-                    <div class="cov-stats">{{ activeCases }}</div>
-                </div>
-                <div v-if="casesperm" class="cov-col">
-                    <i class="fas fa-viruses" :style="{ 'color': bgcolor }"></i>
-                    <h4>{{ labelcasesperm }}</h4>
-                    <div class="cov-stats">{{ country.total_cases_per1m }}</div>
+                    <div class="cov-stats">{{ country.active.toLocaleString() }}</div>
                 </div>
             </div>
             
@@ -78,15 +68,7 @@ Vue.component("country-widget", {
             type: Boolean,
             default: 1
         },
-        'critical': {
-            type: Boolean,
-            default: 1
-        },
         'active': {
-            type: Boolean,
-            default: 1
-        },
-        'casesperm': {
             type: Boolean,
             default: 1
         },
@@ -110,50 +92,37 @@ Vue.component("country-widget", {
             type: String,
             default: 'Recovered'
         },
-        'labelcritical': {
-            type: String,
-            default: 'Critical'
-        },
         'labelactive': {
             type: String,
             default: 'Active Cases'
-        },
-        'labelcasesperm': {
-            type: String,
-            default: 'Cases / 1M'
         }
     },
     data() {
         return {
             loading: true,
             country: null,
-            activeCases: null,
-            taken_at: ''
         }
     },
     methods: {
-        numberWithCommas(n) {
-            return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        },
-        countryData(country) {
+        async countryData(country) {
             this.loading = true;
-            let stat_by_country = 'https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php';
 
-            axios.get(stat_by_country, { 
-                headers: { 'x-rapidapi-host': host, 'x-rapidapi-key': key },
-                params: { 'country': country,  } 
-            } )
+            await axios.get("https://pomber.github.io/covid19/timeseries.json")
             .then(res => {
-                this.country = res.data.latest_stat_by_country[0];
 
-                //console.log(this.country.record_date)
+                let latest = res.data[country][res.data[country].length - 1]
+                let yesterday = res.data[country][res.data[country].length - 2];              
 
-                this.taken_at = moment(this.country.record_date).format('MMMM Do, YYYY');
-                let cases = parseInt(this.country.total_cases.replace(/,/g, ''), 10);
-                let recoverd = parseInt(this.country.total_recovered.replace(/,/g, ''), 10);
-                let deaths = parseInt(this.country.total_deaths.replace(/,/g, ''), 10);
-                let activeCases = cases - recoverd - deaths;
-                this.activeCases = this.numberWithCommas(activeCases);                
+                this.country = {
+                    name: country,
+                    date: moment(latest.date, "YYYY-M-DD").format('MMMM Do, YYYY'),
+                    cases: latest.confirmed,
+                    deaths: latest.deaths,
+                    recovered: latest.recovered,
+                    active: latest.confirmed - latest.deaths - latest.recovered,
+                    cases_new: latest.confirmed - yesterday.confirmed,
+                    deaths_new : latest.deaths - yesterday.deaths
+                }
 
             })
             .catch(function(e) {
@@ -162,8 +131,7 @@ Vue.component("country-widget", {
             .finally(() => {
                 this.loading = false;
             });            
-        },
-        
+        }        
     },
     mounted() {
         this.countryData(this.country);

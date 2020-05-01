@@ -13,17 +13,13 @@ function covid_widget_shortcode( $atts ) {
             'cases' => true,
             'deaths' => true,
             'recovered' => true,
-            'critical' => true,
             'active' => true,
-            'casesperm' => true,
             'labeltitle' => 'Corona (COVID-19)',
             'labelglobal' => 'Global Stats',
             'labelcases' => 'Cases',
             'labeldeaths' => 'Deaths',
             'labelrecovered' => 'Recovered',
-            'labelcritical' => 'Critical',
             'labelactive' => 'Active Cases',
-            'labelcasesperm' => 'Cases / 1M',
             'labelcaseswide' => 'Confirmed Cases',
             'labeldeathswide' => 'Confirmed Deaths',
             'labelrecoveredwide' => 'Total Recovered',
@@ -41,18 +37,14 @@ function covid_widget_shortcode( $atts ) {
     $charttype = $atts['charttype'];
     $cases = $atts['cases'];
     $deaths = $atts['deaths'];
-    $critical = $atts['critical'];
     $active = $atts['active'];
-    $casesperm = $atts['casesperm'];
     $recovered = $atts['recovered'];
     $labeltitle = $atts['labeltitle'];
     $labelglobal = $atts['labelglobal'];
     $labelcases = $atts['labelcases'];
     $labeldeaths = $atts['labeldeaths'];
     $labelrecovered = $atts['labelrecovered'];
-    $labelcritical = $atts['labelcritical'];
     $labelactive = $atts['labelactive'];
-    $labelcasesperm = $atts['labelcasesperm'];
 
     $labelcaseswide = $atts['labelcaseswide'];
     $labeldeathswide = $atts['labeldeathswide'];
