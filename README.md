@@ -1,5 +1,7 @@
 ## Corona (COVID-19) Stats WordPress Plugin
 
+**Deprecated initial release with *coronavirus-monitor* api from *rapidapi.com***
+
 This plugins displays Corona (COVID-19) Virus Stats in multiple formats. You can add card with Global Stats, Country Stats, Country Stats with Chart and Table with data for all countries.
 
 Please check demo and all available parameters [https://covid19-wp.netlify.app](https://covid19-wp.netlify.app)
