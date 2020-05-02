@@ -7,7 +7,7 @@ Tags: corona, covid-19, covid, stats, coronavirus, virus
 Requires at least: 4.1
 Requires PHP: 5.6
 Tested up to: 5.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 ```
 
 This plugins displays Corona (COVID-19) Virus Stats in multiple formats. You can add card with Global Stats, Country Stats, Country Stats with Chart and Table with data for all countries.
