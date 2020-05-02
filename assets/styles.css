@@ -46,10 +46,11 @@
 }
 .cov-card {
     position: relative;
-    width: 350px;
+    width: 450px;
     margin: auto;
     color: #fff;
     padding: 30px;
+    box-sizing: border-box;
     border-radius: 40px;
     box-shadow: 0 0 30px 0 rgba(30, 135, 240, 0.5);
 }
@@ -72,18 +73,9 @@
     font-size: 24px;
     margin-bottom: 20px;
 }
-.cov-card .cov-stats {
-    font-size: 18px;
-    line-height: 130%;
-}
-.cov-grid-wide {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: 10px;
-}
 .cov-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 .cov-grid .cov-col {
     position: relative;
@@ -94,22 +86,22 @@
     text-align: center;
     border-radius: 22px;
 }
-.cov-grid .cov-col:nth-child(2n) {
+.cov-grid .cov-col:nth-child(3n) {
     margin-right: 0;
 }
 .cov-grid .cov-col .fas {
     display: block;
-    width: 90px;
-    height: 90px;
-    font-size: 45px;
-    line-height: 200%;
+     width: 80px;
+    height: 80px;
+    font-size: 40px;
+    line-height: 190%;
     background-color: #fff;
     color: rgb(30, 135, 240);
     border-radius: 100%;
     margin: auto;
 }
 .cov-grid .cov-col h4 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: #fff;
     text-transform: uppercase;
@@ -117,12 +109,12 @@
 }
 .cov-grid .cov-col span {
     position: absolute;
-    top: 95px;
-    left: 50%;
+    top: 88px;
+    right: 5px;
     background-color: #ef3232;
     color: #fff;
-    padding: 3px 6px 4px;
-    font-size: 13px;
+    padding: 3px 5px 4px;
+    font-size: 12px;
     border-radius: 20px;
 }
 .cov-updated {
@@ -267,19 +259,19 @@ ul.chart-list li.deaths span {
 .tabulator-cell[tabulator-field="country"] {
     font-weight: 700;
 }
-.tabulator-cell[tabulator-field="cases_new"] {
+.tabulator-cell[tabulator-field="todayCases"] {
     background-color: #e0f2ff;
     font-weight: 700;
 }
-.tabulator-cell[tabulator-field="cases_new"]:before {
+.tabulator-cell[tabulator-field="todayCases"]:before {
     content: "+"
 }
-.tabulator-cell[tabulator-field="deaths_new"] {
+.tabulator-cell[tabulator-field="todayDeaths"] {
     background-color: #f00;
     color: #fff;
     font-weight: 700;
 }
-.tabulator-cell[tabulator-field="deaths_new"]:before {
+.tabulator-cell[tabulator-field="todayDeaths"]:before {
     content: "+"
 }
 .tabulator .tabulator-header, .tabulator .tabulator-header .tabulator-col {

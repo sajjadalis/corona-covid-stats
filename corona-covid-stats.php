@@ -3,7 +3,7 @@
 * Plugin Name: Corona (COVID-19) Stats
 * Description: Better-Robots.txt plugin helps you boosting your website indexation and your ranking by adding specific instructions in your robots.txt
 * Author: Sajjad Ali
-* Version: 1.0.1
+* Version: 1.0.2
 * Author URI: https://covid19-wp.netlify.com/
 * Text Domain: corona-covid-stats
 * Domain Path: /languages/

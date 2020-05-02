@@ -29,21 +29,23 @@ Vue.component('table-view', {
                 tooltips: true,
                 tooltipsHeader: true,
                 pagination:"local",
-                height: '100%',
+                //height: '400',
                 paginationSize:15,
-                paginationSizeSelector:[10, 15, 25, 50, 'All'],
+                paginationSizeSelector:[10, 15, 25, 50,],
                 columnMinWidth: '100',
                 initialSort : [
-                    { column: "confirmed", dir: "desc" }
+                    { column: "cases", dir: "desc" }
                 ],
                 columns: [
                     {title:"Country", field:"country"},
-                    {title:"Cases", field:"confirmed", sorter:"number", formatter:"money", formatterParams:{precision:false}},
-                    {title:"New Cases", field:"cases_new", sorter:"number", formatter:"money", formatterParams:{precision:false}},
-                    {title:"Deaths", field:"deaths", sorter:"number", formatter:"money", formatterParams:{precision:false}},
-                    {title:"New Deaths", field:"deaths_new", sorter:"number", formatter:"money", formatterParams:{precision:false}},
-                    {title:"Total Recovered", field:"recovered", sorter:"number", formatter:"money", formatterParams:{precision:false}},
-                    {title:"Active Cases", field:"active_cases", sorter:"number", formatter:"money", formatterParams:{precision:false}}
+                    {title:"Cases", field:"cases", sorter:"number", align:"center", formatter:"money", formatterParams:{precision:false}},
+                    {title:"New Cases", field:"todayCases", sorter:"number", align:"center", formatter:"money", formatterParams:{precision:false}},
+                    {title:"Deaths", field:"deaths", sorter:"number", align:"center", formatter:"money", formatterParams:{precision:false}},
+                    {title:"New Deaths", field:"todayDeaths", sorter:"number", align:"center", formatter:"money", formatterParams:{precision:false}},
+                    {title:"Critical", field:"critical", sorter:"number", align:"center", formatter:"money", formatterParams:{precision:false}},
+                    {title:"Recovered", field:"recovered", sorter:"number", align:"center", formatter:"money", formatterParams:{precision:false}},
+                    {title:"Active Cases", field:"active", sorter:"number", align:"center", formatter:"money", formatterParams:{precision:false}},
+                    {title:"Cases / 1 Million", field:"casesPerOneMillion", sorter:"number", align:"center", formatter:"money", formatterParams:{precision:false}}
                 ]
             }
         }
@@ -56,28 +58,10 @@ Vue.component('table-view', {
 
             this.loading = true;
 
-            await axios.get("https://pomber.github.io/covid19/timeseries.json")
+            await axios.get("https://disease.sh/v2/countries")
             .then(res => {
 
-                let yesterday = []
-                for (let [key, value] of Object.entries(res.data)) {
-                    yesterday.push(value[value.length - 2]);
-                }
-                
-                let yesterday_cases = yesterday.reduce((a, {confirmed}) => a + confirmed, 0);
-                let yesterday_deaths = yesterday.reduce((a, {deaths}) => a + deaths, 0);
-
-                for (let [key, value] of Object.entries(res.data)) {
-                    this.tabledata.push(
-                        {
-                            country:key,
-                            cases_new: value[value.length - 1].confirmed - value[value.length - 2].confirmed,
-                            deaths_new: value[value.length - 1].deaths - value[value.length - 2].deaths,
-                            active_cases: value[value.length - 1].confirmed - value[value.length - 1].deaths - value[value.length - 1].recovered,
-                            ...value[value.length - 1]
-                        }
-                    );
-                }
+                this.tabledata = res.data;
 
             })
             .catch(err => {

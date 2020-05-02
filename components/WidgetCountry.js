@@ -11,18 +11,23 @@ Vue.component("country-widget", {
                               
             <h3>{{ labeltitle }}</h3>
             
-            <h5 >{{ country.name }} <span class="cov-updated" :style="{ 'color': bgcolor }">{{country.date}}</span></h5>
+            <h5 >{{ country.country }}</h5>
             <i class="fas fa-virus cov-icon"></i>
             <div class="cov-grid">
                 <div v-if="cases" class="cov-col">
                     <i class="fas fa-head-side-cough" :style="{ 'color': bgcolor }"></i>
                     <h4>{{ labelcases }}</h4>
-                    <div class="cov-stats">{{ country.cases.toLocaleString() }} <span class="cov-new">+{{ country.cases_new.toLocaleString() }} New</span></div>
+                    <div class="cov-stats">{{ country.cases.toLocaleString() }} <span class="cov-new">+{{ country.todayCases }} New</span></div>
                 </div>
                 <div v-if="deaths" class="cov-col">
                     <i class="fas fa-head-side-virus" :style="{ 'color': bgcolor }"></i>
                     <h4>{{ labeldeaths }}</h4>
-                    <div class="cov-stats">{{ country.deaths.toLocaleString() }} <span class="cov-new">+{{ country.deaths_new.toLocaleString() }} New</span></div>
+                    <div class="cov-stats">{{ country.deaths.toLocaleString() }} <span class="cov-new">+{{ country.todayDeaths }} New</span></div>
+                </div>
+                <div v-if="critical" class="cov-col">
+                    <i class="fas fa-lungs-virus" :style="{ 'color': bgcolor }"></i>
+                    <h4>{{ labelcritical }}</h4>
+                    <div class="cov-stats">{{ country.critical.toLocaleString() }}</div>
                 </div>
                 <div v-if="recovered" class="cov-col">
                     <i class="fas fa-lungs" :style="{ 'color': bgcolor }"></i>
@@ -33,6 +38,11 @@ Vue.component("country-widget", {
                     <i class="fas fa-syringe" :style="{ 'color': bgcolor }"></i>
                     <h4>{{ labelactive }}</h4>
                     <div class="cov-stats">{{ country.active.toLocaleString() }}</div>
+                </div>
+                <div v-if="casesperm" class="cov-col">
+                    <i class="fas fa-viruses" :style="{ 'color': bgcolor }"></i>
+                    <h4>{{ labelcasesperm }}</h4>
+                    <div class="cov-stats">{{ country.casesPerOneMillion.toLocaleString() }}</div>
                 </div>
             </div>
             
@@ -72,6 +82,14 @@ Vue.component("country-widget", {
             type: Boolean,
             default: 1
         },
+        'critical': {
+            type: Boolean,
+            default: 1
+        },
+        'casesperm': {
+            type: Boolean,
+            default: 1
+        },
         'labeltitle': {
             type: String,
             default: 'Corona (COVID-19)'
@@ -95,6 +113,14 @@ Vue.component("country-widget", {
         'labelactive': {
             type: String,
             default: 'Active Cases'
+        },
+        'labelcritical': {
+            type: String,
+            default: 'Critical'
+        },
+        'labelcasesperm': {
+            type: String,
+            default: 'Cases / 1M'
         }
     },
     data() {
@@ -107,22 +133,10 @@ Vue.component("country-widget", {
         async countryData(country) {
             this.loading = true;
 
-            await axios.get("https://pomber.github.io/covid19/timeseries.json")
+            await axios.get("https://disease.sh/v2/countries/" + country)
             .then(res => {
 
-                let latest = res.data[country][res.data[country].length - 1]
-                let yesterday = res.data[country][res.data[country].length - 2];              
-
-                this.country = {
-                    name: country,
-                    date: moment(latest.date, "YYYY-M-DD").format('MMMM Do, YYYY'),
-                    cases: latest.confirmed,
-                    deaths: latest.deaths,
-                    recovered: latest.recovered,
-                    active: latest.confirmed - latest.deaths - latest.recovered,
-                    cases_new: latest.confirmed - yesterday.confirmed,
-                    deaths_new : latest.deaths - yesterday.deaths
-                }
+                this.country = res.data;
 
             })
             .catch(function(e) {
