@@ -1,4 +1,4 @@
-=== Corona (COVID-19) Stats ===
+=== Corona (COVID-19) Live Stats ===
 Contributors: the-rock, pagup
 Tags: corona, covid-19, covid, stats, coronavirus, virus
 Requires at least: 4.1
@@ -12,7 +12,7 @@ An easy to use Corona (COVID-19) Stats Plugin with powerful features.
 
 == Description ==
 
-This plugins displays Corona (COVID-19) Virus Stats in multiple formats. You can add card with Global Stats, Country Stats, Country Stats with Chart and Table with data for all countries.
+This plugins displays Corona (COVID-19) Live Stats in multiple formats. You can add card with Global Stats, Country Stats, Country Stats with Chart and Table with data for all countries.
 
 ### USAGE
 

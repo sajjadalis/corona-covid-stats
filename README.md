@@ -1,7 +1,7 @@
-## Corona (COVID-19) Stats WordPress Plugin
+## Corona (COVID-19) Live Stats WordPress Plugin
 
 ```
-=== Corona (COVID-19) Stats ===
+=== Corona (COVID-19) Live Stats ===
 Contributors: the-rock, pagup
 Tags: corona, covid-19, covid, stats, coronavirus, virus
 Requires at least: 4.1
@@ -10,7 +10,7 @@ Tested up to: 5.4
 Stable tag: 1.0.2
 ```
 
-This plugins displays Corona (COVID-19) Virus Stats in multiple formats. You can add card with Global Stats, Country Stats, Country Stats with Chart and Table with data for all countries.
+This plugins displays Corona (COVID-19) Live Stats in multiple formats. You can add card with Global Stats, Country Stats, Country Stats with Chart and Table with data for all countries.
 
 ### USAGE
 
