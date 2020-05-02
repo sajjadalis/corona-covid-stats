@@ -38,7 +38,7 @@ Here is the list of basic shortcodes.
 
 **Note**: You must have to use country name as defined in data source. Please check country name list on [https://covid19-wp.netlify.app/](https://covid19-wp.netlify.app/). e.g: "United States" or "USA" will not work but "US" will work. Similarly "South Korea" won't work. This is because the data source listed those names like that. You have to use [shortcode generator](https://covid19-wp.netlify.app/), select country from drop-down and then copy full shortcode or copy defined country name inside your shortcode.
 
-**Data Source:** [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) via [pomber/covid19](https://github.com/pomber/covid19). Data copyright 2020 Johns Hopkins University. The data is under [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) terms of use.
+**Data Source:** [NovelCOVID/API](https://github.com/NovelCOVID/API). Documentation can be found [here](https://disease.sh/docs/). Please check Privacy Policy [here](https://github.com/NovelCOVID/API/blob/master/privacy.md) and License [here](https://github.com/NovelCOVID/API/blob/master/LICENSE)
 
 == Installation ==
 
@@ -58,10 +58,10 @@ OR
 == Frequently Asked Questions ==
 
 = What is source of Data? =
-Data is sourced from [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) via [pomber/covid19](https://github.com/pomber/covid19)
+Data is sourced from [worldometer](https://www.worldometers.info/coronavirus/), [JHU-CSSE](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) and [nytimes/covid-19-data]https://github.com/nytimes/covid-19-data via [NovelCOVID/API](https://github.com/NovelCOVID/API)
 
 = How often data updates? =
-Data is automatically updated by end of the day. You can check update timestamp on [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) Github Repository.
+Data is updated after every 10 minutes according to NovelCOVID API [documenation](https://disease.sh/docs/).
 
 == Screenshots ==
 
@@ -77,3 +77,7 @@ Data is automatically updated by end of the day. You can check update timestamp 
 
 = 1.0.1 =
 * Changed data source to https://github.com/CSSEGISandData/COVID-19
+
+= 1.0.2 =
+* Changed data source to NovelCOVID/API. 
+* Added Critical and Cases Per Million to Global, Countries Stats.
