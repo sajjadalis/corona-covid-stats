@@ -34,9 +34,9 @@ Here is the list of basic shortcodes.
 **COVID-19 Affected Countries Data Table**
 [covid-widget type="table"]
 
-**Note**: You must have to use country name as defined in data source. Please check country name list on [https://covid19-wp.netlify.app/](https://covid19-wp.netlify.app/). e.g: "United States" or "USA" will not work but "US" will work. Similarly "South Korea" won't work. This is because the data source listed those names like that. You have to use [shortcode generator](https://covid19-wp.netlify.app/), select country from drop-down and then copy full shortcode or copy defined country name inside your shortcode.
+**Note**: You must have to use country name as defined in data source. Please check country name list on [https://covid19-wp.netlify.app/](https://covid19-wp.netlify.app/). e.g: "United States" will not work but "US" or "USA" will work. Similarly "South Korea" won't work. This is because the data source listed country names like` that. You have to use [shortcode generator](https://covid19-wp.netlify.app/), select country from drop-down and then copy full shortcode or copy defined country name inside your shortcode.
 
-**Data Source:** [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) via [pomber/covid19](https://github.com/pomber/covid19). Data copyright 2020 Johns Hopkins University. The data is under [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) terms of use.
+**Data Source:** [NovelCOVID/API](https://github.com/NovelCOVID/API). Documentation can be found [here](https://disease.sh/docs/). Please check Privacy Policy [here](https://github.com/NovelCOVID/API/blob/master/privacy.md) and License [here](https://github.com/NovelCOVID/API/blob/master/LICENSE)
 
 The code for this WordPress plugin is under MIT licensed.
 
@@ -65,3 +65,7 @@ This is a open source free plugin. You can do whatever you want with it. And you
 
 **1.0.1**
 * Changed data source to https://github.com/CSSEGISandData/COVID-19
+
+**1.0.2**
+* Changed data source to NovelCOVID/API. 
+* Added Critical and Cases Per Million to Global, Countries Stats.
