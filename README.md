@@ -1,12 +1,42 @@
 ## Corona (COVID-19) Stats WordPress Plugin
 
+```
+=== Corona (COVID-19) Stats ===
+Contributors: the-rock, pagup
+Tags: corona, covid-19, covid, stats, coronavirus, virus
+Requires at least: 4.1
+Requires PHP: 5.6
+Tested up to: 5.4
+Stable tag: 1.0.1
+```
+
 This plugins displays Corona (COVID-19) Virus Stats in multiple formats. You can add card with Global Stats, Country Stats, Country Stats with Chart and Table with data for all countries.
 
-Please check demo and all available parameters on [https://covid19-wp.netlify.app](https://covid19-wp.netlify.app)
+### USAGE
 
-**Data Source:** [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) via [pomber/covid19](https://github.com/pomber/covid19). 
+Please check demo and available parameters/settings on [https://covid19-wp.netlify.app/](https://covid19-wp.netlify.app/)
 
-Data copyright 2020 Johns Hopkins University. The data is under [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) terms of use.
+Here is the list of basic shortcodes.
+
+**COVID-19 Global Stats Card**
+[covid-widget type="global-card"]
+
+**COVID-19 Global Stats Wide (full width)**
+[covid-widget type="global-wide" bgcolor="#043785" textcolor="#ffffff"]
+
+**COVID-19 Single Country Stats Card**
+[covid-widget type="country-card" country="US" bgcolor="#043785"]
+
+**Country Card with Chart Shortcode**
+[covid-widget type="country-chart" country="US" charttype="bar"]
+*chart types: bar, horizontalBar, doughnut,  line, radar, polarArea*
+
+**COVID-19 Affected Countries Data Table**
+[covid-widget type="table"]
+
+**Note**: You must have to use country name as defined in data source. Please check country name list on [https://covid19-wp.netlify.app/](https://covid19-wp.netlify.app/). e.g: "United States" or "USA" will not work but "US" will work. Similarly "South Korea" won't work. This is because the data source listed those names like that. You have to use [shortcode generator](https://covid19-wp.netlify.app/), select country from drop-down and then copy full shortcode or copy defined country name inside your shortcode.
+
+**Data Source:** [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) via [pomber/covid19](https://github.com/pomber/covid19). Data copyright 2020 Johns Hopkins University. The data is under [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) terms of use.
 
 The code for this WordPress plugin is under MIT licensed.
 
@@ -19,7 +49,7 @@ The code for this WordPress plugin is under MIT licensed.
 3. Upload Zip file and Activate Plugin
 4. Go to [https://covid19-wp.netlify.app](https://covid19-wp.netlify.app) for Shortcode Generator.
 
-Alternatively
+OR
 
 1. Clone this repo or Unzip all files to the `/wp-content/plugins`. Directory strucutre should look like `/wp-content/plugins/corona-covid-stats`
 2. Log into WordPress admin and activate the 'Corona (COVID-19) Stats' plugin through the 'Plugins' menu
@@ -27,3 +57,11 @@ Alternatively
 
 
 This is a open source free plugin. You can do whatever you want with it. And you can use this service as is. I try my best to ensure stability. If there is any problem or need help. Please post on issues.
+
+### Changelog
+
+**1.0.0**
+* Initial release with rapidapi source.
+
+**1.0.1**
+* Changed data source to https://github.com/CSSEGISandData/COVID-19

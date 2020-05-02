@@ -1,5 +1,5 @@
 === Corona (COVID-19) Stats ===
-Contributors: the-rock, pagup, freemius
+Contributors: the-rock, pagup
 Tags: corona, covid-19, covid, stats, coronavirus, virus
 Requires at least: 4.1
 Requires PHP: 5.6
