@@ -1,4 +1,4 @@
-=== Corona (COVID-19) Live Stats ===
+=== Coronavirus (COVID-19) Live Stats & Updates - Beautiful Graphics, Charts, Wordlwide / Country Stats (USA, Spain, China, Pakistan ...) ===
 Contributors: the-rock, pagup
 Tags: corona, covid-19, covid, stats, coronavirus, virus
 Requires at least: 4.1
@@ -8,7 +8,7 @@ Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-An easy to use Corona (COVID-19) Stats Plugin with powerful features.
+An easy to use Corona (COVID-19) Stats Plugin with powerful features and beautiful graphics.
 
 == Description ==
 
@@ -27,7 +27,7 @@ Here is the list of basic shortcodes.
 [covid-widget type="global-wide" bgcolor="#043785" textcolor="#ffffff"]
 
 **COVID-19 Single Country Stats Card**
-[covid-widget type="country-card" country="US" bgcolor="#043785"]
+[covid-widget type="country-card" country="USA" bgcolor="#043785"]
 
 **Country Card with Chart Shortcode**
 [covid-widget type="country-chart" country="US" charttype="bar"]
@@ -36,7 +36,7 @@ Here is the list of basic shortcodes.
 **COVID-19 Affected Countries Data Table**
 [covid-widget type="table"]
 
-**Note**: You must have to use country name as defined in data source. Please check country name list on [https://covid19-wp.netlify.app/](https://covid19-wp.netlify.app/). e.g: "United States" or "USA" will not work but "US" will work. Similarly "South Korea" won't work. This is because the data source listed those names like that. You have to use [shortcode generator](https://covid19-wp.netlify.app/), select country from drop-down and then copy full shortcode or copy defined country name inside your shortcode.
+**Note**: You must have to use country name as defined in data source. Please check country name list on [https://covid19-wp.netlify.app/](https://covid19-wp.netlify.app/). e.g: "United States" will not work but "USA" will work. Similarly "South Korea" won't work, S.Korea should work. This is because the data source listed those names like that. You have to use [shortcode generator](https://covid19-wp.netlify.app/), select country from drop-down and then copy full shortcode or copy defined country name inside your shortcode.
 
 **Data Source:** [NovelCOVID/API](https://github.com/NovelCOVID/API). Documentation can be found [here](https://disease.sh/docs/). Please check Privacy Policy [here](https://github.com/NovelCOVID/API/blob/master/privacy.md) and License [here](https://github.com/NovelCOVID/API/blob/master/LICENSE)
 
@@ -81,3 +81,6 @@ Data is updated after every 10 minutes according to NovelCOVID API [documenation
 = 1.0.2 =
 * Changed data source to NovelCOVID/API. 
 * Added Critical and Cases Per Million to Global, Countries Stats.
+
+= 1.0.3 =
+* Fixed link for rating notice

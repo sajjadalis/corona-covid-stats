@@ -3,7 +3,7 @@
 * Plugin Name: Corona (COVID-19) Live Stats
 * Description: Display Corona (COVID-19) Live Stats in multiple formats (card, chart, table) with Simple Shortcodes.
 * Author: Sajjad Ali
-* Version: 1.0.2
+* Version: 1.0.3
 * Author URI: https://covid19-wp.netlify.com/
 * Text Domain: corona-covid-stats
 * Domain Path: /languages/
@@ -40,7 +40,7 @@ class COV_Stats {
 
 $cov_stats = new COV_Stats;
 /*-----------------------------------------
-                Shortcoded
+                Shortcodes
 ------------------------------------------*/
 include_once COV_PLUGIN_PATH .'/includes/covid-widget.php';
 

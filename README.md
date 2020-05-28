@@ -69,3 +69,6 @@ This is a open source free plugin. You can do whatever you want with it. And you
 **1.0.2**
 * Changed data source to NovelCOVID/API. 
 * Added Critical and Cases Per Million to Global, Countries Stats.
+
+**1.0.3**
+* Fixed link for rating notice

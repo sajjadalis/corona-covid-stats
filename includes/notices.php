@@ -23,7 +23,7 @@ function cov19__notice_rate()
     
     <div data-dismissible="cov-rating-30" class="notice cov-notice notice-success is-dismissible">
         <p class="cov-p"><?php 
-    $rating_url = "https://wordpress.org/support/plugin/corona-covid-stats/reviews/?rate=5#new-post";
+    $rating_url = "https://wordpress.org/plugins/corona-covid-19-stats/reviews/?rate=5#new-post";
     $show_support = sprintf( wp_kses( __( 'Show support for Corona (COVID-19) Stats Plugin with a 5-star rating » <a href="%s" target="_blank">Click here</a>', 'cov' ), array(
         'a' => array(
         'href'   => array(),
