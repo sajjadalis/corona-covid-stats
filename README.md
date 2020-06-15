@@ -72,3 +72,6 @@ This is a open source free plugin. You can do whatever you want with it. And you
 
 **1.0.3**
 * Fixed link for rating notice
+
+**1.0.4**
+* 🐛 FIX: Width issue and label issue for all widgets
