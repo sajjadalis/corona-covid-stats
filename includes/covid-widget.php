@@ -38,6 +38,7 @@ function covid_widget_shortcode( $atts ) {
     $country = $atts['country'];
     $bgcolor = $atts['bgcolor'];
     $textcolor = $atts['textcolor'];
+    $width = $atts['width'];
     $charttype = $atts['charttype'];
     $cases = $atts['cases'];
     $deaths = $atts['deaths'];

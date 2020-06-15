@@ -2,7 +2,7 @@
 
 if(!empty($country)) {
 
-    $output = "<div id='app-$rand' class='cov-container'><country-chart country='$country' charttype='$charttype' cases='$cases' deaths='$deaths' recovered='$recovered' active='$active' labeltitle='$labeltitle' labelglobal='$labelglobal' labelcases='$labelcases' labeldeaths='$labeldeaths' labelrecovered='$labelrecovered' labelactive='$labelactive'></country-chart></div>";
+    $output = "<div id='app-$rand' class='cov-container'><country-chart country='$country' charttype='$charttype' cardwidth='$width' cases='$cases' deaths='$deaths' recovered='$recovered' active='$active' labeltitle='$labeltitle' labelglobal='$labelglobal' labelcases='$labelcases' labeldeaths='$labeldeaths' labelrecovered='$labelrecovered' labelcritical='$labelcritical' labelactive='$labelactive' labelcasesperm='$labelcasesperm'></country-chart></div>";
 
 } else {
 
