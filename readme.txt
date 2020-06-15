@@ -84,3 +84,6 @@ Data is updated after every 10 minutes according to NovelCOVID API [documenation
 
 = 1.0.3 =
 * Fixed link for rating notice
+
+= 1.0.4 =
+* 🐛 FIX: Width issue and label issue for all widgets
